@@ -73,7 +73,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
           widget.controller
               .createTask(Task(
                 name: nameController.text,
-                status: TaskStatus.inProgress,
+                status: TaskStatus.todo,
                 priority: priority,
                 description: descriptionController.text,
               ))

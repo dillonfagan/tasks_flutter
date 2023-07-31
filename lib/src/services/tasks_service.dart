@@ -13,7 +13,7 @@ class TasksService extends TasksServiceBase {
 
   @override
   Future<List<Record<Task>>> fetchTasks({
-    TaskStatus status = TaskStatus.inProgress,
+    TaskStatus status = TaskStatus.todo,
   }) async {
     return tasks.entries
         .where((t) => t.value.status == status)
