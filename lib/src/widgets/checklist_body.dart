@@ -6,8 +6,8 @@ import 'package:tasks_app/src/widgets/task_card.dart';
 
 import '../models/task.dart';
 
-class TasksBody extends StatelessWidget {
-  const TasksBody({super.key});
+class ChecklistBody extends StatelessWidget {
+  const ChecklistBody({super.key});
 
   @override
   Widget build(BuildContext context) {
