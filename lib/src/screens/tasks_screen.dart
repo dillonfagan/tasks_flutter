@@ -4,32 +4,23 @@ import 'package:tasks_app/src/screens/create_task_screen.dart';
 import 'package:tasks_app/src/widgets/checklist_body.dart';
 import 'package:tasks_app/src/controllers/tasks_controller.dart';
 import 'package:tasks_app/src/services/tasks_service.dart';
-import 'package:tasks_app/src/widgets/kanban_body/kanban_body.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  final checklistBody = const ChecklistBody();
-  final kanbanBody = const KanbanBody();
-
-  int selectedIndex = 0;
-  Widget get body => selectedIndex == 0 ? checklistBody : kanbanBody;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => TasksController(service: TasksService()),
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: body,
+        appBar: AppBar(
+          title: const Text('Task List'),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        body: const Padding(
+          padding: EdgeInsets.all(16),
+          child: ChecklistBody(),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Consumer<TasksController>(
           builder: (context, controller, child) {
             return FloatingActionButton(
@@ -40,23 +31,6 @@ class _TasksScreenState extends State<TasksScreen> {
               },
               child: const Icon(Icons.add),
             );
-          },
-        ),
-        bottomNavigationBar: NavigationBar(
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-          selectedIndex: selectedIndex,
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.checklist),
-              label: 'Checklist',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.view_kanban),
-              label: 'Kanban',
-            ),
-          ],
-          onDestinationSelected: (value) {
-            setState(() => selectedIndex = value);
           },
         ),
       ),

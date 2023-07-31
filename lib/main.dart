@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
         ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Colors.orange.shade600,
+          backgroundColor: Colors.teal.shade600,
           foregroundColor: Colors.white,
         ),
         navigationBarTheme: NavigationBarThemeData(
