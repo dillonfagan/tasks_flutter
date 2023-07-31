@@ -23,7 +23,7 @@ class TasksBody extends StatelessWidget {
             final List<Record<Task>> tasks = snapshot.data!;
 
             if (tasks.isEmpty) {
-              return const Center(child: Text('No tasks'));
+              return const Center(child: Text("You're all caught up!"));
             }
 
             return ListView.separated(
